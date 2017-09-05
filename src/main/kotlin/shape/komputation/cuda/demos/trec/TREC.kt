@@ -1,17 +1,17 @@
 package shape.komputation.cuda.demos.trec
 
-import shape.komputation.cuda.network.CudaNetwork
-import shape.komputation.demos.trec.NLP
-import shape.komputation.demos.trec.TRECData
-import shape.komputation.initialization.uniformInitialization
-import shape.komputation.layers.entry.lookupLayer
-import shape.komputation.layers.forward.activation.reluLayer
-import shape.komputation.layers.forward.activation.softmaxLayer
-import shape.komputation.layers.forward.convolution.convolutionalLayer
-import shape.komputation.layers.forward.dropout.dropoutLayer
-import shape.komputation.layers.forward.projection.projectionLayer
-import shape.komputation.loss.logisticLoss
-import shape.komputation.optimization.historical.nesterov
+import com.komputation.cuda.network.CudaNetwork
+import com.komputation.demos.trec.NLP
+import com.komputation.demos.trec.TRECData
+import com.komputation.initialization.uniformInitialization
+import com.komputation.layers.entry.lookupLayer
+import com.komputation.layers.forward.activation.reluLayer
+import com.komputation.layers.forward.activation.softmaxLayer
+import com.komputation.layers.forward.convolution.convolutionalLayer
+import com.komputation.layers.forward.dropout.dropoutLayer
+import com.komputation.layers.forward.projection.projectionLayer
+import com.komputation.loss.logisticLoss
+import com.komputation.optimization.historical.nesterov
 import java.io.File
 import java.util.*
 
@@ -68,7 +68,7 @@ class Trec {
         val trainingDocumentsWithFilteredTokens = NLP.filterTokens(trainingDocuments, embeddableVocabulary)
         val maximumDocumentLength = trainingDocumentsWithFilteredTokens.maxBy { document -> document.size }!!.size
 
-        val testDocumentsWithFilteredTokens = NLP.filterTokens(testDocuments, embeddableVocabulary) // NLP.cutOff(NLP.filterTokens(testDocuments, embeddableVocabulary), maximumDocumentLength)
+        val testDocumentsWithFilteredTokens = NLP.filterTokens(testDocuments, embeddableVocabulary)
 
         val embeddableTrainingIndices = NLP.filterDocuments(trainingDocumentsWithFilteredTokens, filterWidth)
         val embeddableTestIndices = NLP.filterDocuments(testDocumentsWithFilteredTokens, filterWidth)

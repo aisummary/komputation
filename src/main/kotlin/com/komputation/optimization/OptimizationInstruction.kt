@@ -1,0 +1,3 @@
+package com.komputation.optimization
+
+interface OptimizationInstruction : CpuOptimizationInstruction, CudaOptimizationInstruction
